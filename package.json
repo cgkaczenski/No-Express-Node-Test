@@ -6,20 +6,16 @@
   "scripts": {
     "start": "node index.js"
   },
-  "dependencies": {
-    "express": "~4.9.x"
-  },
   "engines": {
     "node": "0.12.2"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
+    "url": "https://github.com/cgkaczenski/node-test"
   },
   "keywords": [
     "node",
-    "heroku",
-    "express"
+    "heroku"
   ],
   "license": "MIT"
 }
