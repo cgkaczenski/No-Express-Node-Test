@@ -1,4 +1,4 @@
-//var Stock = require("./stock.js");
+var Stock = require("./stock.js");
 var renderer = require("./renderer.js");
 var querystring = require("querystring");
 var commonHeaders = {'Content-Type': 'text/html'}
@@ -28,4 +28,28 @@ function home(request, response) {
   }
 }
 
+function stock(request, response) {
+
+  //if url == "/...."                                                                                    
+  var symbol = request.url.replace("/", "");
+  if (symbol.length > 0 && symbol != "favicon.ico") {
+    response.writeHead(200, commonHeaders);
+    renderer.view("header", {}, response);  
+
+    var stockData = new Stock(symbol);   
+    stockData.on("end", function(stockJSON) {
+
+    values = {
+	symbol : stockJSON.query.results.quote[0].Symbol,
+	price : stockJSON.query.results.quote[0].Close
+    }
+
+    renderer.view("stock", values, response);
+    renderer.view("footer", {}, response);  
+    response.end();
+    });
+  }
+}
+
 module.exports.home = home;
+module.exports.stock = stock;

@@ -4,7 +4,7 @@ var port = process.env.PORT || 8080;
 
 http.createServer(function (request, response) {
   router.home(request, response);
-  //router.test(request, response);
+  router.stock(request, response);
 }).listen(port, function () {
     console.log('Server running at ' + port);
 });
