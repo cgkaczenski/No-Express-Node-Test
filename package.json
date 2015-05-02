@@ -17,5 +17,8 @@
     "node",
     "heroku"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "jsdom": "^3.1.2"
+  }
 }

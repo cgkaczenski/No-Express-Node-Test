@@ -1,7 +1,9 @@
 var Stock = require("./stock.js");
 var renderer = require("./renderer.js");
 var querystring = require("querystring");
+var svg = require('./svg-jsdom.js');
 var commonHeaders = {'Content-Type': 'text/html'}
+ 
 
 //Handle HTTP route GET / and POST / i.e. Home
 function home(request, response) {
@@ -39,8 +41,11 @@ function stock(request, response) {
     var stockData = new Stock(symbol);   
     stockData.on("end", function(stockJSON) {
 
+    svg.svgGen(function (svg) {  
+	
     values = {
 	symbol : stockJSON.query.results.quote[0].Symbol,
+	svg : svg,
 	price : stockJSON.query.results.quote[0].Close
     }
 
@@ -48,6 +53,7 @@ function stock(request, response) {
     renderer.view("footer", {}, response);  
     response.end();
     });
+    });	
   }
 }
 
