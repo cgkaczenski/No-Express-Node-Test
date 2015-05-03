@@ -41,8 +41,8 @@ function stock(request, response) {
     var stockData = new Stock(symbol);   
     stockData.on("end", function(stockJSON) {
 
-    svg.svgGen(function (svg) {  
-	
+    svg.svgGen(stockJSON, function (svg) {  
+    //console.log(stockJSON.query.results.quote);
     values = {
 	symbol : stockJSON.query.results.quote[0].Symbol,
 	svg : svg,
