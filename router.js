@@ -20,9 +20,8 @@ function home(request, response) {
       //if url == "/" && POST
       //get the post data from body
       request.on("data", function(postBody){
-        //extract the username
         var query = querystring.parse(postBody.toString());
-        //redirect to /:username
+        
         response.writeHead(303, {"Location": "/" + query.symbol});
 	  response.end();
       });
@@ -42,7 +41,7 @@ function stock(request, response) {
     stockData.on("end", function(stockJSON) {
 
     svg.svgGen(stockJSON, function (svg) {  
-    //console.log(stockJSON.query.results.quote);
+    
     values = {
 	symbol : stockJSON.query.results.quote[0].Symbol,
 	svg : svg,
@@ -53,7 +52,7 @@ function stock(request, response) {
     renderer.view("footer", {}, response);  
     response.end();
     });
-    });	
+   });	
   }
 }
 

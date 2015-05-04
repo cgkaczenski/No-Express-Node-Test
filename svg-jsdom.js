@@ -3,25 +3,14 @@ var jsdom = require('jsdom');
 function svgGen(data,callback){
 
 
-    jsdom.env(
+jsdom.env(
 	"<html><body></body></html>",
 	[ 'http://d3js.org/d3.v3.min.js' ],
-	function (err, window) {
-	    /*var svg = window.d3.select("body")
-		.append("svg")
-		.attr("width", 100).attr("height", 100);
+function (err, window) {
 
-	    svg.append("rect")
-		.attr("x", 10)
-		.attr("y", 10)
-		.attr("width", 80)
-		.attr("height", 80)
-		.style("fill", "orange");
-
-*/
 var margin = {top: 30, right: 40, bottom: 30, left: 50},
-    width = 600 - margin.left - margin.right,
-    height = 270 - margin.top - margin.bottom;
+   width = 600 - margin.left - margin.right,
+   height = 270 - margin.top - margin.bottom;
 
 // Parse the date / time
 var parseDate = window.d3.time.format("%Y-%m-%d").parse;
@@ -90,10 +79,4 @@ var svg = window.d3.select("body")
 }
 
 module.exports.svgGen = svgGen;
-
-/*
-var result = svgGen(function (svg) {
-    console.log(svg); 
-});
-*/
 
