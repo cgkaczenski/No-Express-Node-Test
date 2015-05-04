@@ -14,8 +14,8 @@ function stock(symbol) {
     EventEmitter.call(this);
     stockEmitter = this;
 
-    var start = "2015-04-20";
-    var end = "2015-04-24";
+    var start = "2014-04-20";
+    var end = "2015-05-04";
     //Connect to the API URL (http://teamtreehouse.com/username.json)
 
     var request = https.get("https://query.yahooapis.com/v1/public/yql"+
